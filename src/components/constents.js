@@ -19,3 +19,4 @@ export const Strings = {
     about: "About"
   }
 };
+

@@ -19,7 +19,8 @@ class DetailCard extends React.Component {
       <ScrollView>
         <View style={Styles.FlexDirectionColumn}>
           <View style={styles.ImageSectionStyle}>
-            <Image source={{ uri: imageUrl }} />
+            <Text>{Data.rating}</Text>
+            {/* <Image source={{ uri: imageUrl }} /> */}
           </View>
           <View style={styles.IconsoverallView}>
             <View style={styles.RatingIconAlignment}>

@@ -10,12 +10,14 @@ import Colors from "../../helper/color";
 class Card extends React.Component {
   render() {
     const { item, details } = this.props;
-    let categories = item.categories.length > 0 ? item.categories[0] : null;
-    let imageurl =
-      categories && categories.icon && categories.icon.prefix
-        ? categories.icon.prefix + "64.png"
-        : null;
-    let itemId = item.id;
+    // let categories = item.categories.length > 0 ? item.categories[0] : null;
+    // let imageurl =
+    //   categories && categories.icon && categories.icon.prefix
+    //     ? categories.icon.prefix + "64.png"
+    //     : null;
+    let itemId = details.id;
+    let ratingColor = "#" + details.ratingColor;
+
     return (
       <View>
         <TouchableOpacity
@@ -32,12 +34,12 @@ class Card extends React.Component {
                 height: scale(113)
               }}
             >
-              <Image
+              {/* <Image
                 style={{ width: 100, height: 100 }}
                 source={{
                   uri: imageurl
                 }}
-              />
+              /> */}
             </View>
             {/* </PhotoCardSection> */}
             {/* <CardSection> */}
@@ -56,14 +58,14 @@ class Card extends React.Component {
                     color: "#1D1D26 "
                   }}
                 >
-                  {item.name}
+                  {details.name}
                 </Text>
               </View>
               <View style={{ flex: 4 }}>
                 {/* <RatingCard> */}
                 <View
                   style={{
-                    backgroundColor: "#61B616",
+                    backgroundColor: ratingColor,
                     width: scale(20),
                     height: scale(20),
                     marginTop: scale(25),
@@ -75,7 +77,8 @@ class Card extends React.Component {
                     style={{
                       fontSize: scale(11.25),
                       color: Colors.white,
-                      textAlign: "center"
+                      textAlign: "center",
+                      paddingTop: scale(3)
                     }}
                   >
                     {details.rating}
@@ -92,7 +95,12 @@ class Card extends React.Component {
                     color: Colors.grey
                   }}
                 >
-                  {item.location.address} {item.location.city}
+                  {details.location && details.location.address
+                    ? details.location.address
+                    : "unavilable"}
+                  {details.location && details.location.city
+                    ? details.location.city
+                    : null}
                 </Text>
               </View>
             </View>

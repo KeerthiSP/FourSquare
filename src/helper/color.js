@@ -1,6 +1,6 @@
 const CLR = {
   black: "#000",
-  grey: "#bebebe",
+  grey: "grey",
   // grey gets darker with count
   grey1: "#ababab",
   grey2: "#989898",
@@ -10,6 +10,7 @@ const CLR = {
   lightgrey1: "#cbcbcb",
   lightgrey2: "#d1d1d1",
   lightgrey3: "#dedede",
+  lightgrey4: "#dfdfdf",
   maroon: "#370B27",
   white: "#ffffff",
   blackcurrent: "#351347",
@@ -24,7 +25,11 @@ const Colors = {
   white: CLR.white,
   grey: CLR.grey,
   grey1: CLR.lightgrey,
-  overview: "#351347"
+  grey2: CLR.lightgrey2,
+  grey3: CLR.lightgrey3,
+  grey4: CLR.lightgrey4,
+  overview: "#351347",
+  black: CLR.black
 };
 
 export default Colors;

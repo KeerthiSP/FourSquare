@@ -27,5 +27,17 @@ export const Icons = {
     searchIcon: require("./serch_hdpi.png"),
     nearMeIcon: require("./near_me_hdpi.png")
   },
-  filterIcon: require("./filter_icon_hdpi.png")
+  filterIcon: require("./filter_icon_hdpi.png"),
+  filter: {
+    ruppe1: require("./ruppe_btn1.png"),
+    ruppe2: require("./ruppe_btn2.png"),
+    ruppe3: require("./ruppe_btn3.png"),
+    ruppe4: require("./ruppe_btn4.png"),
+    selectedruppe1: require("./ruppe_btn1_selected.png"),
+    selectedruppe2: require("./ruppe_btn2_selected.png"),
+    selectedruppe3: require("./ruppe_btn3_selected.png"),
+    selectedruppe4: require("./ruppe_btn4_selected.png"),
+    filterSelected: require("./filter_selected.png"),
+    filterUnSelected: require("./filter_unselected.png")
+  }
 };

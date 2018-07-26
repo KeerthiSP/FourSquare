@@ -3,34 +3,34 @@ import request from "../network/network";
 function getVenueList() {
   return request({
     url:
-      "v2/venues/search?ll=12.91,74.86&client_id=MQSWTHDBMC5JRWDJLEKYN5I05FFBFUNPP5O1GDD3TNHIQNMG&client_secret=1TEJPPJ5ATG0QFC42REHG4IQPGQDTNHWGJAH4LKIV0I2LNAZ&v=20180719&categoryId=4d4b7105d754a06374d81259",
+      "v2/venues/search?ll=12.91,74.86&&oauth_token=VGKRP0UM5SW3EQNS2BMDFXVMYEHFERDVBBJNWFNS1JDNTYRE&v=20180719&categoryId=4d4b7105d754a06374d81259",
     method: "GET"
   });
 }
 function getDetails(id) {
   return request({
-    url: `v2/venues/${id}?&client_id=MQSWTHDBMC5JRWDJLEKYN5I05FFBFUNPP5O1GDD3TNHIQNMG&client_secret=1TEJPPJ5ATG0QFC42REHG4IQPGQDTNHWGJAH4LKIV0I2LNAZ&v=20180719`,
+    url: `v2/venues/${id}?&&oauth_token=VGKRP0UM5SW3EQNS2BMDFXVMYEHFERDVBBJNWFNS1JDNTYRE&v=20180719`,
     method: "GET"
   });
 }
 function getPopularVenueList() {
   return request({
     url:
-      "v2/venues/explore?ll=12.91,74.86&client_id=MQSWTHDBMC5JRWDJLEKYN5I05FFBFUNPP5O1GDD3TNHIQNMG&client_secret=1TEJPPJ5ATG0QFC42REHG4IQPGQDTNHWGJAH4LKIV0I2LNAZ&v=20180719&categoryId=4d4b7105d754a06374d81259",
+      "v2/venues/explore?ll=12.91,74.86&&oauth_token=VGKRP0UM5SW3EQNS2BMDFXVMYEHFERDVBBJNWFNS1JDNTYRE&v=20180719&categoryId=4d4b7105d754a06374d81259",
     method: "GET"
   });
 }
 function getCoffeeShopList() {
   return request({
     url:
-      "v2/venues/search?ll=12.91,74.86&client_id=MQSWTHDBMC5JRWDJLEKYN5I05FFBFUNPP5O1GDD3TNHIQNMG&client_secret=1TEJPPJ5ATG0QFC42REHG4IQPGQDTNHWGJAH4LKIV0I2LNAZ&v=20180719&categoryId=4bf58dd8d48988d1e0931735",
+      "v2/venues/search?ll=12.91,74.86&&oauth_token=VGKRP0UM5SW3EQNS2BMDFXVMYEHFERDVBBJNWFNS1JDNTYRE&v=20180719&categoryId=4bf58dd8d48988d1e0931735",
     method: "GET"
   });
 }
 function getLunchHomeList() {
   return request({
     url:
-      "v2/venues/search?ll=12.91,74.86&client_id=PK3QMGGPI5U5WBQSGA52M3YGLYXP1CFHP00G4KPQDPT2AE2B&client_secret=TNJBGF1L25WUNMGB2CZI4KY0TUAN5V2B0EVLNPCKIOR41WSP&v=20180719&categoryId=4bf58dd8d48988d147941735",
+      "v2/venues/search?ll=12.91,74.86&&oauth_token=VGKRP0UM5SW3EQNS2BMDFXVMYEHFERDVBBJNWFNS1JDNTYRE&v=20180719&categoryId=4bf58dd8d48988d147941735",
     method: "GET"
   });
 }

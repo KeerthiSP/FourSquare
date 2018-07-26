@@ -9,14 +9,24 @@ import Colors from "../../helper/color";
 
 class Card extends React.Component {
   render() {
-    const { item, details } = this.props;
+    const { item, det } = this.props;
     // let categories = item.categories.length > 0 ? item.categories[0] : null;
-    // let imageurl =
-    //   categories && categories.icon && categories.icon.prefix
-    //     ? categories.icon.prefix + "64.png"
-    //     : null;
-    let itemId = details.id;
-    let ratingColor = "#" + details.ratingColor;
+    let imageurl =
+      det.photos &&
+      det.photos.groups[0] &&
+      det.photos.groups[0].items[0] &&
+      det.photos.groups[0].items[0].prefix &&
+      det.photos.groups[0].items[0].suffix
+        ? det.photos.groups[0].items[0].prefix +
+          "300x300" +
+          det.photos.groups[0].items[0].suffix
+        : null;
+
+    //let details = det[item.id] ? det[item.id] : "Unavilable";
+    let itemId = item.id;
+    let rating = det.rating ? det.rating : "not";
+    //let color= det.rating
+    let ratingColor = "#" + det.ratingColor ? det.ratingColor : "000000";
 
     return (
       <View>
@@ -58,14 +68,14 @@ class Card extends React.Component {
                     color: "#1D1D26 "
                   }}
                 >
-                  {details.name}
+                  {det.name ? det.name : "null"}
                 </Text>
               </View>
               <View style={{ flex: 4 }}>
                 {/* <RatingCard> */}
                 <View
                   style={{
-                    backgroundColor: ratingColor,
+                    backgroundColor: "green",
                     width: scale(20),
                     height: scale(20),
                     marginTop: scale(25),
@@ -81,7 +91,8 @@ class Card extends React.Component {
                       paddingTop: scale(3)
                     }}
                   >
-                    {details.rating}
+                    {/* {det.rating ? det.rating : "null"} */}
+                    {rating}
                   </Text>
                 </View>
                 {/* </RatingCard> */}
@@ -95,11 +106,11 @@ class Card extends React.Component {
                     color: Colors.grey
                   }}
                 >
-                  {details.location && details.location.address
-                    ? details.location.address
+                  {item.location && item.location.address
+                    ? item.location.address
                     : "unavilable"}
-                  {details.location && details.location.city
-                    ? details.location.city
+                  {item.location && item.location.city
+                    ? item.location.city
                     : null}
                 </Text>
               </View>
@@ -121,7 +132,7 @@ const styles = StyleSheet.create({
     width: scale(362),
     height: scale(112),
     marginLeft: scale(6),
-    marginTop: scale(6)
+    marginBottom: scale(6)
     // shadowRadius: 1,
     // shadowColor: 'grey',
     // shadowOpacity: 0.5,

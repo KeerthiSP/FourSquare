@@ -6,7 +6,8 @@ const Styles = {
     MapSectionStyle: {
       backgroundColor: Colors.white,
       width: "100%",
-      height: scale(180)
+      height: scale(180),
+      marginBottom: scale(6)
     }
   },
   ButtonTitleStyle: {

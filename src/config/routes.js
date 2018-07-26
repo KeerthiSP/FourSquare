@@ -13,41 +13,44 @@ import AboutusScreen from "../screens/aboutus/aboutus";
 import DrawerContainer from "../components/drawerContainer";
 import { scale } from "../helper/scale";
 
-const AppStack = createStackNavigator({
-  tabs: {
-    screen: Tabs
+const AppStack = createStackNavigator(
+  {
+    tabs: {
+      screen: Tabs
+    },
+    filter: {
+      screen: FilterScreen
+    },
+    search: {
+      screen: SearchScreen
+    },
+    detail: {
+      screen: DetailScreen
+    },
+    addReview: {
+      screen: AddReviewScreen
+    },
+    review: {
+      screen: ReviewScreen
+    },
+    rating: {
+      screen: RatingScreen
+    },
+    photos: {
+      screen: PhotosScreen
+    },
+    About: {
+      screen: AboutusScreen
+    },
+    Favourites: {
+      screen: Favourites
+    },
+    Feedback: {
+      screen: FeedbackScreen
+    }
   },
-  filter: {
-    screen: FilterScreen
-  },
-  search: {
-    screen: SearchScreen
-  },
-  detail: {
-    screen: DetailScreen
-  },
-  addReview: {
-    screen: AddReviewScreen
-  },
-  review: {
-    screen: ReviewScreen
-  },
-  rating: {
-    screen: RatingScreen
-  },
-  photos: {
-    screen: PhotosScreen
-  },
-  About: {
-    screen: AboutusScreen
-  },
-  Favourites: {
-    screen: Favourites
-  },
-  Feedback: {
-    screen: FeedbackScreen
-  }
-});
+  { mode: "modal" }
+);
 
 const NavigationScreens = createDrawerNavigator(
   {

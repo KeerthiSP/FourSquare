@@ -2,15 +2,15 @@ import React from "react";
 import { View, TouchableOpacity, StyleSheet, Text, Image } from "react-native";
 import { withNavigation } from "react-navigation";
 import { scale } from "../../helper/scale";
-import PhotoCardSection from "../../components/cards/photoCardSection";
-import CardSection from "../../components/cards/cardSection";
-import RatingCard from "../../components/cards/ratingCard";
 import Colors from "../../helper/color";
+import { Strings } from "../constents";
+import { Icons } from "../../assets/img";
 
 class Card extends React.Component {
   render() {
     const { item, det } = this.props;
-    // let categories = item.categories.length > 0 ? item.categories[0] : null;
+    let img =
+      "http://www.spoon-tamago.com/wp-content/uploads/2013/06/Paper-torch-2.jpg";
     let imageurl =
       det.photos &&
       det.photos.groups[0] &&
@@ -18,15 +18,41 @@ class Card extends React.Component {
       det.photos.groups[0].items[0].prefix &&
       det.photos.groups[0].items[0].suffix
         ? det.photos.groups[0].items[0].prefix +
-          "300x300" +
+          "100x100" +
           det.photos.groups[0].items[0].suffix
         : null;
-
-    //let details = det[item.id] ? det[item.id] : "Unavilable";
     let itemId = item.id;
-    let rating = det.rating ? det.rating : "not";
-    //let color= det.rating
-    let ratingColor = "#" + det.ratingColor ? det.ratingColor : "000000";
+    let rating = det.rating ? det.rating : "no rating";
+    let formattedAddress =
+      det.location &&
+      det.location.formattedAddress &&
+      det.location.formattedAddress[0]
+        ? det.location.formattedAddress[1]
+          ? det.location.formattedAddress[2]
+            ? det.location.formattedAddress[0] +
+              ", " +
+              det.location.formattedAddress[1] +
+              ", " +
+              det.location.formattedAddress[2]
+            : det.location.formattedAddress[0] +
+              ", " +
+              det.location.formattedAddress[1]
+          : det.location.formattedAddress[0]
+        : " address null";
+    let green = "#green";
+    let ratingColor = det.ratingColor ? "#" + det.ratingColor : green;
+    let expense =
+      det.location && det.location.country
+        ? det.attributes &&
+          det.attributes.groups[0] &&
+          det.attributes.groups[0].summary
+          ? det.location.country +
+            " " +
+            Strings.bullet +
+            " " +
+            det.attributes.groups[0].summary
+          : det.location.country
+        : Icons.details.favourite;
 
     return (
       <View>
@@ -44,12 +70,12 @@ class Card extends React.Component {
                 height: scale(113)
               }}
             >
-              {/* <Image
-                style={{ width: 100, height: 100 }}
+              <Image
+                style={{ width: 130, height: 130 }}
                 source={{
                   uri: imageurl
                 }}
-              /> */}
+              />
             </View>
             {/* </PhotoCardSection> */}
             {/* <CardSection> */}
@@ -65,7 +91,7 @@ class Card extends React.Component {
                     marginTop: scale(10),
                     marginLeft: scale(10),
                     fontSize: scale(16.88),
-                    color: "#1D1D26 "
+                    color: Colors.black
                   }}
                 >
                   {det.name ? det.name : "null"}
@@ -75,7 +101,7 @@ class Card extends React.Component {
                 {/* <RatingCard> */}
                 <View
                   style={{
-                    backgroundColor: "green",
+                    backgroundColor: ratingColor,
                     width: scale(20),
                     height: scale(20),
                     marginTop: scale(25),
@@ -97,8 +123,27 @@ class Card extends React.Component {
                 </View>
                 {/* </RatingCard> */}
               </View>
-              <View style={{ flex: 4 }}>
+              <View style={{ flex: 4, flexDirection: "column" }}>
                 <Text
+                  style={{
+                    marginTop: scale(6),
+                    marginLeft: scale(10),
+                    fontSize: scale(12.38),
+                    color: Colors.grey
+                  }}
+                >
+                  {expense}
+                </Text>
+                <Text
+                  style={{
+                    marginLeft: scale(10),
+                    fontSize: scale(12.38),
+                    color: Colors.grey
+                  }}
+                >
+                  {formattedAddress}
+                </Text>
+                {/* <Text
                   style={{
                     marginTop: scale(6),
                     marginLeft: scale(10),
@@ -112,7 +157,7 @@ class Card extends React.Component {
                   {item.location && item.location.city
                     ? item.location.city
                     : null}
-                </Text>
+                </Text> */}
               </View>
             </View>
             {/* </CardSection> */}

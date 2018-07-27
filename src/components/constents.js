@@ -30,6 +30,7 @@ export const Strings = {
     rupee2: "\u20B9" + " " + "\u20B9",
     rupee3: "\u20B9" + " " + "\u20B9" + " " + "\u20B9",
     rupee4: "\u20B9" + " " + "\u20B9" + " " + "\u20B9" + " " + "\u20B9",
+
     featureList: {
       _1: "Accepts credit cards",
       _2: "Delivery",
@@ -40,5 +41,7 @@ export const Strings = {
       _7: "Parking",
       _8: "Wi-Fi"
     }
-  }
+  },
+  // bullet: "\u2022"
+  bullet: "\u25CF"
 };

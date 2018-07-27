@@ -11,6 +11,10 @@ export const Icons = {
     feedbackIcon: require("./feedback.png"),
     aboutIcon: require("./about.png")
   },
+  home: {
+    favouritesIcon: require("./favourite_icon.png"),
+    favouritesIconSelected: require("./favourite_icon_selected.png")
+  },
   details: {
     ratingIcon: require("./rating_icon.png"),
     photosIcon: require("./photos_icon.png"),

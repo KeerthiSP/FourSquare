@@ -61,6 +61,18 @@ const styles = {
     backgroundColor: "#422560",
     width: "100%",
     height: scale(50)
+  },
+  myStarStyle: {
+    color: "#F1B30D",
+    backgroundColor: "transparent"
+    // textShadowColor: "black",
+    // textShadowOffset: { width: 1, height: 1 },
+    // textShadowRadius: 2
+    // height: scale(20),
+    // width: scale(20)
+  },
+  myEmptyStarStyle: {
+    color: "#F1B30D"
   }
 };
 export default styles;

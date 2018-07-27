@@ -4,6 +4,8 @@ import { withNavigation } from "react-navigation";
 import Card from "../../components/cards/card";
 import Service from "../../services/services";
 import Styles from "../../helper/styles";
+import AddToFavorites from "./addToFavorites";
+import Map from "./map";
 
 class NearbyScreen extends React.Component {
   constructor(props) {
@@ -54,7 +56,9 @@ class NearbyScreen extends React.Component {
     let name = value[restaurants.id] ? value[restaurants.id] : "NAME";
     return (
       <View>
-        <View style={Styles.home.MapSectionStyle} />
+        <View style={Styles.home.MapSectionStyle}>
+          <Map />
+        </View>
         <FlatList
           data={restaurants}
           extraData={value}
@@ -66,9 +70,7 @@ class NearbyScreen extends React.Component {
                 <Card
                   item={item}
                   det={
-                    value.length != 0 && value[item.id]
-                      ? value[item.id]
-                      : "Null"
+                    value.length != 0 && value[item.id] ? value[item.id] : "nu"
                   }
                   key={item.id}
                 />

@@ -33,14 +33,6 @@ const renderLabel = (label, style) => {
   );
 };
 
-const checkboxSource = () => {
-  return (
-    <View>
-      <Image source={require("../../assets/img/filter_selected.png")} />
-    </View>
-  );
-};
-
 class Feature extends Component {
   state = { selectedFeatures: [] };
 
@@ -54,7 +46,7 @@ class Feature extends Component {
       <View>
         <SelectMultiple
           checkboxStyle={{
-            width: scale(20),sss
+            width: scale(20),
             height: scale(20),
             // borderWidth: scale(8),
             // borderRadius: scale(15),

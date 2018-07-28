@@ -9,6 +9,7 @@ import HeaderRight from "../../components/header/detailscreenHeader/headerRight"
 
 export default class DetailScreen extends React.Component {
   static navigationOptions = {
+    headerTransparent: true,
     headerBackImage: (
       <Image
         style={{ margin: scale(22), marginTop: scale(10) }}
@@ -17,12 +18,10 @@ export default class DetailScreen extends React.Component {
     ),
     headerRight: <HeaderRight />,
     headerStyle: {
-      backgroundColor: "rgba(0, 0, 0, 0.1)",
-      position: "absolute",
-      top: 30,
-      left: 0,
-      right: 0,
-      borderBottomWidth: 0
+      // backgroundColor: "rgba(0, 0, 0, 0.1)",
+      //headerTransparent: true
+      //position: "absolute",
+      marginTop: scale(28)
     },
     height: scale(48),
     width: "100%"

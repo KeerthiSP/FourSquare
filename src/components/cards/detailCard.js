@@ -2,15 +2,14 @@ import React from "react";
 import { View, Image, Text, ScrollView, TouchableOpacity } from "react-native";
 import { withNavigation } from "react-navigation";
 import { scale } from "../../helper/scale";
-import BottomButton from "../../components/cards/bottomButton";
 import { Icons } from "../../assets/img/index";
 import Styles from "../../helper/styles";
 import styles from "../../screens/detail/styles";
 import { Strings } from "../../components/constents";
 import Colors from "../../helper/color";
-import { Rating } from "react-native-elements";
 import Stars from "react-native-stars";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import MapView from "react-native-maps";
 
 class DetailCard extends React.Component {
   render() {
@@ -37,6 +36,23 @@ class DetailCard extends React.Component {
             : Data.categories[0].name + ", " + Data.categories[1].name
           : Data.categories[0].name
         : null;
+    let lat =
+      Data.location &&
+      Data.location.labledLatLngs &&
+      Data.location.labledLatLngs != 0 &&
+      Data.location.labeledLatLngs[0] &&
+      Data.location.labeledLatLngs[0].lat
+        ? Data.location.labeledLatLngs[0].lat
+        : 0;
+    let lng =
+      Data.location &&
+      Data.location.labledLatLngs &&
+      Data.location.labledLatLngs != 0 &&
+      Data.location.labeledLatLngs[1] &&
+      Data.location.labeledLatLngs[1].lat
+        ? Data.location.labeledLatLngs[1].lng
+        : 0;
+
     return (
       <ScrollView>
         <View style={Styles.FlexDirectionColumn}>
@@ -155,7 +171,23 @@ class DetailCard extends React.Component {
               {Data.description ? Data.description : "description not Avilable"}
             </Text>
           </View>
-          <View style={styles.MapSectionStyle} />
+          <View style={styles.MapSectionStyle}>
+            <MapView
+              style={{
+                width: "100%",
+                height: scale(136)
+              }}
+              provider="google"
+              zoomControlEnabled={true}
+              showsUserLocation={true}
+              region={{
+                latitude: lat,
+                longitude: lng,
+                latitudeDelta: 0.015,
+                longitudeDelta: 0.0121
+              }}
+            />
+          </View>
           <TouchableOpacity
             onPress={() => {
               this.props.navigation.navigate("addReview");

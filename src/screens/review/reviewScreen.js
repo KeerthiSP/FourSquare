@@ -1,9 +1,11 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, FlatList } from "react-native";
 import { scale } from "../../helper/scale";
 import Colors from "../../helper/color";
 import BackImage from "../../components/header/detailscreenHeader/backImage";
 import AddReviewHeadreRight from "../../components/header/addReviewHeaderRight";
+import Service from "../../services/services";
+import ReviewCard from "../../components/cards/reviewCard";
 
 class ReviewScreen extends React.Component {
   static navigationOptions = {
@@ -19,65 +21,42 @@ class ReviewScreen extends React.Component {
       width: "100%"
     }
   };
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      reviews: []
+    };
+  }
+
+  componentDidMount = () => {
+    Service.getReviews(this.props.navigation.getParam("data"))
+      .then(response => {
+        console.log("id", response);
+
+        this.setState({
+          reviews: response.response.items
+        });
+      })
+
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  renderContent = () => {
+    const { reviews } = this.state;
     return (
-      <View
-        style={{
-          width: scale(328),
-          height: scale(132),
-          borderColor: Colors.grey,
-          borderBottomWidth: scale(1),
-          flexDirection: "row",
-          marginVertical: scale(22)
+      <FlatList
+        data={reviews}
+        renderItem={({ item }) => {
+          return <ReviewCard item={item} key={item.id} />;
         }}
-      >
-        <View style={{ flex: 5 }}>
-          <View
-            style={{
-              height: scale(40),
-              width: scale(40),
-              backgroundColor: "silver",
-              borderRadius: scale(22),
-              alignSelf: "center"
-            }}
-          />
-        </View>
-        <View style={{ flex: 12 }}>
-          <View
-            style={{
-              flexDirection: "column"
-            }}
-          >
-            <Text
-              style={{
-                fontSize: scale(16),
-                color: "#000000",
-                fontWeight: "bold"
-              }}
-            >
-              Shahista
-            </Text>
-            <ScrollView>
-              <Text
-                style={{
-                  fontSize: scale(13),
-                  color: "#1D1D26",
-                  // textAlign: 'justify',
-                  lineHeight: scale(19)
-                }}
-              >
-                Must try crab soup and oyesters cooked in ghee!!
-              </Text>
-            </ScrollView>
-          </View>
-        </View>
-        <View style={{ flex: 7, alignItems: "center" }}>
-          <View>
-            <Text>June 24,2018</Text>
-          </View>
-        </View>
-      </View>
+      />
     );
+  };
+  render() {
+    const { reviews } = this.state;
+    return <View>{reviews.length != 0 && this.renderContent()}</View>;
   }
 }
 

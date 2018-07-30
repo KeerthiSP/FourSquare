@@ -15,6 +15,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 class DetailCard extends React.Component {
   render() {
     const { Data } = this.props;
+    let itemId = Data.id;
     let imageUrl =
       Data.photos &&
       Data.photos.groups[0] &&
@@ -158,7 +159,7 @@ class DetailCard extends React.Component {
           <View style={styles.MapSectionStyle} />
           <TouchableOpacity
             onPress={() => {
-              this.props.navigation.navigate("addReview");
+              this.props.navigation.navigate("addReview", { data: itemId });
             }}
           >
             <View>

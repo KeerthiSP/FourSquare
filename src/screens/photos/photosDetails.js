@@ -1,13 +1,12 @@
 import React from "react";
-import { Text, View, Image, ScrollView } from "react-native";
-import { withNavigation } from "react-navigation";
+import { Text, View, Image } from "react-native";
 import { scale } from "../../helper/scale";
 import Service from "../../services/services";
 import { Icons } from "../../assets/img/index";
-import DetailCard from "../../components/cards/detailCard";
 import HeaderRight from "../../components/header/detailscreenHeader/headerRight";
+import PhotoDetailCard from "../../components/cards/photoDetailCard";
 
-export default class DetailScreen extends React.Component {
+export default class PhotosDetails extends React.Component {
   static navigationOptions = {
     headerTransparent: true,
     headerBackImage: (
@@ -18,9 +17,6 @@ export default class DetailScreen extends React.Component {
     ),
     headerRight: <HeaderRight />,
     headerStyle: {
-      // backgroundColor: "rgba(0, 0, 0, 0.1)",
-      //headerTransparent: true
-      //position: "absolute",
       marginTop: scale(28)
     },
     height: scale(48),
@@ -30,19 +26,17 @@ export default class DetailScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      Value: []
+      photosDetails: []
     };
   }
-  // const { navigation } = this.props;
-  //   const itemId = navigation.getParam('data', 'NO-ID');
 
   componentDidMount = () => {
-    Service.getDetails(this.props.navigation.getParam("data"))
+    Service.getPhotosDetails(this.props.navigation.getParam("data"))
       .then(response => {
-        console.log("id", response);
+        console.log("PhotoDetails", response.response.photo);
 
         this.setState({
-          Value: response.response.venue
+          photosDetails: response.response.photo
         });
       })
 
@@ -52,16 +46,16 @@ export default class DetailScreen extends React.Component {
   };
 
   renderItems() {
-    const Data = this.state.Value;
-    if (Data === null) {
+    const details = this.state.photosDetails;
+    if (details === null) {
       return <View />;
     }
 
-    return <DetailCard key={Data.id} Data={Data} />;
+    return <PhotoDetailCard key={details.id} photoDetails={details} />;
   }
 
   render() {
     console.log(this.state);
-    return <ScrollView>{this.renderItems()}</ScrollView>;
+    return this.renderItems();
   }
 }

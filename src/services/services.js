@@ -40,6 +40,18 @@ function getReviews(id) {
     method: "GET"
   });
 }
+function getPhotos(id) {
+  return request({
+    url: `v2/venues/${id}/photos?&&oauth_token=VGKRP0UM5SW3EQNS2BMDFXVMYEHFERDVBBJNWFNS1JDNTYRE&v=20180719`,
+    method: "GET"
+  });
+}
+function getPhotosDetails(id) {
+  return request({
+    url: `v2/photos/${id}?&&oauth_token=VGKRP0UM5SW3EQNS2BMDFXVMYEHFERDVBBJNWFNS1JDNTYRE&v=20180719`,
+    method: "GET"
+  });
+}
 // function getPopularVenueDetails(id) {
 //   return request({
 //     url: `v2/venues/trending/${id}?&client_id=T3GENN5AWPN1ILYOUSAQZIE0AI2VIXFSYRT3ZD14H4ZIN4JH&client_secret=THCA33X2XLK4X2CZJ0PVYGAWPBPU3MPE33DB10HEXWC4Y2AH&v=20180711&categoryId=4d4b7105d754a06374d81259`,
@@ -51,6 +63,8 @@ const Service = {
   getVenueList,
   getDetails,
   getReviews,
+  getPhotos,
+  getPhotosDetails,
   getPopularVenueList,
   getCoffeeShopList,
   getLunchHomeList

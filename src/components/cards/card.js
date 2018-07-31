@@ -9,8 +9,6 @@ import { Icons } from "../../assets/img";
 class Card extends React.Component {
   render() {
     const { item, det } = this.props;
-    let img =
-      "http://www.spoon-tamago.com/wp-content/uploads/2013/06/Paper-torch-2.jpg";
     let imageurl =
       det.photos &&
       det.photos.groups[0] &&
@@ -22,7 +20,7 @@ class Card extends React.Component {
           det.photos.groups[0].items[0].suffix
         : null;
     let itemId = item.id;
-    let rating = det.rating ? det.rating : "no rating";
+    let rating = det.rating ? det.rating : null;
     let formattedAddress =
       det.location &&
       det.location.formattedAddress &&
@@ -38,9 +36,9 @@ class Card extends React.Component {
               ", " +
               det.location.formattedAddress[1]
           : det.location.formattedAddress[0]
-        : " address null";
-    let green = "#green";
-    let ratingColor = det.ratingColor ? "#" + det.ratingColor : green;
+        : "Address unavilable";
+    let ratingDefaultColor = "green";
+    let ratingColor = det.ratingColor ? "#" + det.ratingColor : null;
     let expense =
       det.location && det.location.country
         ? det.attributes &&
@@ -52,7 +50,7 @@ class Card extends React.Component {
             " " +
             det.attributes.groups[0].summary
           : det.location.country
-        : Icons.details.favourite;
+        : null;
 
     return (
       <View>
@@ -62,7 +60,6 @@ class Card extends React.Component {
           }}
         >
           <View style={styles.SectionStyle}>
-            {/* <PhotoCardSection> */}
             <View
               style={{
                 backgroundColor: "silver",
@@ -77,8 +74,6 @@ class Card extends React.Component {
                 }}
               />
             </View>
-            {/* </PhotoCardSection> */}
-            {/* <CardSection> */}
             <View
               style={{
                 width: scale(234),
@@ -98,7 +93,6 @@ class Card extends React.Component {
                 </Text>
               </View>
               <View style={{ flex: 4 }}>
-                {/* <RatingCard> */}
                 <View
                   style={{
                     backgroundColor: ratingColor,
@@ -117,11 +111,9 @@ class Card extends React.Component {
                       paddingTop: scale(3)
                     }}
                   >
-                    {/* {det.rating ? det.rating : "null"} */}
                     {rating}
                   </Text>
                 </View>
-                {/* </RatingCard> */}
               </View>
               <View style={{ flex: 4, flexDirection: "column" }}>
                 <Text
@@ -143,24 +135,8 @@ class Card extends React.Component {
                 >
                   {formattedAddress}
                 </Text>
-                {/* <Text
-                  style={{
-                    marginTop: scale(6),
-                    marginLeft: scale(10),
-                    fontSize: scale(12.38),
-                    color: Colors.grey
-                  }}
-                >
-                  {item.location && item.location.address
-                    ? item.location.address
-                    : "unavilable"}
-                  {item.location && item.location.city
-                    ? item.location.city
-                    : null}
-                </Text> */}
               </View>
             </View>
-            {/* </CardSection> */}
           </View>
         </TouchableOpacity>
       </View>
@@ -178,8 +154,5 @@ const styles = StyleSheet.create({
     height: scale(112),
     marginLeft: scale(6),
     marginBottom: scale(6)
-    // shadowRadius: 1,
-    // shadowColor: 'grey',
-    // shadowOpacity: 0.5,
   }
 });

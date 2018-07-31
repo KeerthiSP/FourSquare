@@ -1,21 +1,33 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, Image } from "react-native";
 import { scale } from "../../helper/scale";
 import Colors from "../../helper/color";
 
 class ReviewCard extends React.Component {
   render() {
     const { item } = this.props;
-    let id = item[0].id;
+    let text = item.text ? item.text : null;
+    let firstName =
+      item.user && item.user.firstName ? item.user.firstName : null;
+    let lastName = item.user && item.user.lastName ? item.user.lastName : null;
+    let name = firstName + " " + lastName;
+    let photo =
+      item.user &&
+      item.user.photo &&
+      item.user.photo.prefix &&
+      item.user.photo.suffix
+        ? item.user.photo.prefix + "100x100" + item.user.photo.suffix
+        : null;
+    console.log("text", text);
     return (
       <View
         style={{
-          width: scale(328),
-          height: scale(132),
-          borderColor: Colors.grey,
+          width: "100%",
+          // height: scale(132),
+          borderColor: Colors.grey2,
           borderBottomWidth: scale(1),
           flexDirection: "row",
-          marginVertical: scale(22)
+          marginTop: scale(20)
         }}
       >
         <View style={{ flex: 5 }}>
@@ -27,8 +39,18 @@ class ReviewCard extends React.Component {
               borderRadius: scale(22),
               alignSelf: "center"
             }}
-          />
+          >
+            <Image
+              style={{
+                width: scale(40),
+                height: scale(40),
+                borderRadius: scale(20)
+              }}
+              source={{ uri: photo }}
+            />
+          </View>
         </View>
+
         <View style={{ flex: 12 }}>
           <View
             style={{
@@ -42,18 +64,19 @@ class ReviewCard extends React.Component {
                 fontWeight: "bold"
               }}
             >
-              id
+              {name}
             </Text>
             <ScrollView>
               <Text
                 style={{
                   fontSize: scale(13),
                   color: "#1D1D26",
-                  // textAlign: 'justify',
-                  lineHeight: scale(19)
+                  textAlign: "justify",
+                  lineHeight: scale(19),
+                  marginBottom: scale(20)
                 }}
               >
-                Must try crab soup and oyesters cooked in ghee!!
+                {text}
               </Text>
             </ScrollView>
           </View>

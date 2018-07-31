@@ -51,7 +51,7 @@ class NearbyScreen extends React.Component {
   };
   renderContent = () => {
     const { restaurants, value } = this.state;
-    console.log("Restaurants", restaurants);
+    console.log("Restaurants", restaurants.location);
     console.log("value", value);
     let name = value[restaurants.id] ? value[restaurants.id] : "NAME";
     return (

@@ -6,7 +6,7 @@ export const Strings = {
   },
   subTitles: {
     overview: "Overview",
-    writeReview: " Write Review",
+    writeReview: "Write Review",
     addPhotoToYourReview: "Add photos to your review"
   },
   buttonsName: {
@@ -37,7 +37,7 @@ export const Strings = {
       _3: "Dog frindly",
       _4: "Family-friendly places",
       _5: "In walking distance",
-      _6: "outdoor seating",
+      _6: "Outdoor seating",
       _7: "Parking",
       _8: "Wi-Fi"
     }

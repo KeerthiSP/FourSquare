@@ -31,10 +31,10 @@ class ReviewScreen extends React.Component {
   componentDidMount = () => {
     Service.getReviews(this.props.navigation.getParam("data"))
       .then(response => {
-        console.log("id", response);
+        console.log("review", response.response.tips.items);
 
         this.setState({
-          reviews: response.response.items
+          reviews: response.response.tips.items
         });
       })
 

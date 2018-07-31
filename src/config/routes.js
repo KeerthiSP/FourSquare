@@ -11,6 +11,7 @@ import Favourites from "../screens/favourites/favouritesScreen";
 import FeedbackScreen from "../screens/feedback/feedback";
 import AboutusScreen from "../screens/aboutus/aboutus";
 import DrawerContainer from "../components/drawerContainer";
+import PhotosDetails from "../screens/photos/photosDetails";
 import { scale } from "../helper/scale";
 
 const AppStack = createStackNavigator(
@@ -47,6 +48,9 @@ const AppStack = createStackNavigator(
     },
     Feedback: {
       screen: FeedbackScreen
+    },
+    photosDetails: {
+      screen: PhotosDetails
     }
   },
   { mode: "modal" }
